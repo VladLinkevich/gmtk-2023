@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://c7nkp2tpu31q5"]
+[gd_scene load_steps=35 format=3 uid="uid://c7nkp2tpu31q5"]
 
 [ext_resource type="Texture2D" uid="uid://bhql7tv64c7a0" path="res://Sprite/atlas.png" id="1_cl6yx"]
 [ext_resource type="Script" path="res://Code/Pacman.gd" id="2_fwo8u"]
 [ext_resource type="AudioStream" uid="uid://devwkdk7w0eml" path="res://Audio/coin_1.wav" id="3_6qo0s"]
 [ext_resource type="Script" path="res://Code/Input.gd" id="3_l3jom"]
 [ext_resource type="AudioStream" uid="uid://cl416ppsabvg5" path="res://Audio/coin_3.wav" id="5_clfhn"]
+[ext_resource type="Script" path="res://Code/Ghost.gd" id="6_vgbum"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r05u1"]
 texture = ExtResource("1_cl6yx")
@@ -228,12 +229,128 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl68k"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06nxp"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgn43"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(128, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1irh"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(144, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3icq2"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(160, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btubm"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(176, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwcuw"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(96, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcvi2"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(112, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b1nb"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hwq4"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(80, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwlmv"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jilu"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7vnpw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl68k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06nxp")
+}],
+"loop": true,
+"name": &"down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgn43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1irh")
+}],
+"loop": true,
+"name": &"ghost",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3icq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btubm")
+}],
+"loop": true,
+"name": &"ghost_white",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwcuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcvi2")
+}],
+"loop": true,
+"name": &"left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b1nb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hwq4")
+}],
+"loop": true,
+"name": &"right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwlmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jilu")
+}],
+"loop": true,
+"name": &"up",
+"speed": 8.0
+}]
+
 [node name="Game" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
 rotation = 0.00134981
-scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_ag7as")
 format = 2
 layer_0/name = "Border"
@@ -262,10 +379,10 @@ layer_3/tile_data = PackedInt32Array()
 
 [node name="Pacman" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(2, 2)
+position = Vector2(336, 368)
 sprite_frames = SubResource("SpriteFrames_8hlrp")
 animation = &"up"
-frame_progress = 0.288599
+frame_progress = 0.764947
 script = ExtResource("2_fwo8u")
 speed = 7.0
 coins_sound = Array[AudioStream]([ExtResource("3_6qo0s"), ExtResource("5_clfhn")])
@@ -275,3 +392,10 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Input" type="Node2D" parent="."]
 script = ExtResource("3_l3jom")
+
+[node name="Blinky" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(336, 240)
+sprite_frames = SubResource("SpriteFrames_7vnpw")
+animation = &"right"
+script = ExtResource("6_vgbum")
