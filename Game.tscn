@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://c7nkp2tpu31q5"]
+[gd_scene load_steps=21 format=3 uid="uid://c7nkp2tpu31q5"]
 
 [ext_resource type="Texture2D" uid="uid://bhql7tv64c7a0" path="res://Sprite/atlas.png" id="1_cl6yx"]
 [ext_resource type="Script" path="res://Code/Pacman.gd" id="2_fwo8u"]
+[ext_resource type="AudioStream" uid="uid://devwkdk7w0eml" path="res://Audio/coin_1.wav" id="3_6qo0s"]
 [ext_resource type="Script" path="res://Code/Input.gd" id="3_l3jom"]
+[ext_resource type="AudioStream" uid="uid://cl416ppsabvg5" path="res://Audio/coin_3.wav" id="5_clfhn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r05u1"]
 texture = ExtResource("1_cl6yx")
@@ -263,9 +265,13 @@ texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_8hlrp")
 animation = &"up"
-frame_progress = 0.773182
+frame_progress = 0.288599
 script = ExtResource("2_fwo8u")
 speed = 7.0
+coins_sound = Array[AudioStream]([ExtResource("3_6qo0s"), ExtResource("5_clfhn")])
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Pacman"]
+scale = Vector2(0.5, 0.5)
 
 [node name="Input" type="Node2D" parent="."]
 script = ExtResource("3_l3jom")
