@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7nkp2tpu31q5"]
+
+[ext_resource type="Texture2D" uid="uid://rx117c34tfmt" path="res://Sprite/maze.png" id="1_aav07"]
+[ext_resource type="Script" path="res://Code/TileMap.gd" id="2_0q0xy"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Maze" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_aav07")
+centered = false
+
+[node name="TileMap" type="Node2D" parent="."]
+script = ExtResource("2_0q0xy")
