@@ -19,7 +19,7 @@ const INVERT_DIRECTION = {
 
 var _rage : bool
 var _rage_time : float
-var _tween : Tween
+var tween : Tween
 var pos : Vector2i
 var direction : GameInput.Direction
 
@@ -36,10 +36,28 @@ func _process(delta: float) -> void:
 		if _rage_time < 0:
 			_rage = false
 
+
 func rage_mode():
 	_rage = true
 	_rage_time = Constant.RAGE_TIME
 	direction = GameInput.Direction.NONE
+
+
+func is_rage() -> bool:
+	return _rage
+
+
+func catched():
+	pos = Constant.BLINK_START_POSITION;
+	position = tile_map.map_to_local(pos)
+	
+	_rage = false
+	
+	if tween:
+		tween.kill()
+
+	_update_direction()
+
 
 func _select_target_direction(_target_pos : Vector2i) -> GameInput.Direction:
 	
@@ -96,10 +114,9 @@ func _move_to(_direction : GameInput.Direction):
 	_select_animation(Constant.DIRECTION_ANIMATION[_direction])
 	_bridge_swap()
 
-	_tween = create_tween()
-	_tween.tween_property(self, ^"position", tile_map.map_to_local(pos), 1.0 / (rage_speed if _rage else speed))
-	_tween.tween_callback(func(): _update_direction())
-	_tween.tween_callback(func(): _tween = null)
+	tween = create_tween()
+	tween.tween_property(self, ^"position", tile_map.map_to_local(pos), 1.0 / (rage_speed if _rage else speed))
+	tween.tween_callback(func(): _update_direction())
 
 
 func _select_animation(anim):

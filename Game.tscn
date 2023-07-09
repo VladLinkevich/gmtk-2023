@@ -1,11 +1,13 @@
-[gd_scene load_steps=35 format=3 uid="uid://c7nkp2tpu31q5"]
+[gd_scene load_steps=40 format=3 uid="uid://c7nkp2tpu31q5"]
 
 [ext_resource type="Texture2D" uid="uid://bhql7tv64c7a0" path="res://Sprite/atlas.png" id="1_cl6yx"]
+[ext_resource type="Script" path="res://Code/Game.gd" id="1_gqs07"]
 [ext_resource type="Script" path="res://Code/Pacman.gd" id="2_fwo8u"]
 [ext_resource type="AudioStream" uid="uid://devwkdk7w0eml" path="res://Audio/coin_1.wav" id="3_6qo0s"]
 [ext_resource type="Script" path="res://Code/Input.gd" id="3_l3jom"]
 [ext_resource type="AudioStream" uid="uid://cl416ppsabvg5" path="res://Audio/coin_3.wav" id="5_clfhn"]
 [ext_resource type="Script" path="res://Code/Ghost.gd" id="6_vgbum"]
+[ext_resource type="Script" path="res://WinScreen.gd" id="7_v0yfw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r05u1"]
 texture = ExtResource("1_cl6yx")
@@ -346,7 +348,17 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xnuw"]
+bg_color = Color(0.537255, 0.294118, 0.709804, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_06jhi"]
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig55h"]
+bg_color = Color(0.941176, 0.384314, 0.501961, 1)
+
 [node name="Game" type="Node2D"]
+script = ExtResource("1_gqs07")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -400,3 +412,65 @@ animation = &"right"
 script = ExtResource("6_vgbum")
 speed = 5.0
 rage_speed = 3.0
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 336.0
+offset_bottom = 336.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_v0yfw")
+
+[node name="Win" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5xnuw")
+
+[node name="Label" type="Label" parent="Control/Win"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -34.0
+offset_top = 20.0
+offset_right = 34.0
+offset_bottom = 46.0
+grow_horizontal = 2
+text = "You Win!"
+label_settings = SubResource("LabelSettings_06jhi")
+
+[node name="Button" type="Button" parent="Control/Win"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.5
+offset_top = -80.0
+offset_right = 56.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ig55h")
+text = "Restart"
