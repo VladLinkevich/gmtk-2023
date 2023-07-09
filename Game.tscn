@@ -134,18 +134,6 @@ region = Rect2(16, 64, 16, 16)
 atlas = ExtResource("1_cl6yx")
 region = Rect2(32, 64, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_45778"]
-atlas = ExtResource("1_cl6yx")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j5hq5"]
-atlas = ExtResource("1_cl6yx")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hhnbi"]
-atlas = ExtResource("1_cl6yx")
-region = Rect2(32, 16, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ia6bp"]
 atlas = ExtResource("1_cl6yx")
 region = Rect2(32, 32, 16, 16)
@@ -157,6 +145,18 @@ region = Rect2(16, 32, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_af2w8"]
 atlas = ExtResource("1_cl6yx")
 region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45778"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5hq5"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhnbi"]
+atlas = ExtResource("1_cl6yx")
+region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5dcjh"]
 atlas = ExtResource("1_cl6yx")
@@ -188,20 +188,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_45778")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j5hq5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hhnbi")
-}],
-"loop": true,
-"name": &"left",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ia6bp")
 }, {
 "duration": 1.0,
@@ -209,6 +195,20 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_af2w8")
+}],
+"loop": true,
+"name": &"left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45778")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5hq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhnbi")
 }],
 "loop": true,
 "name": &"right",
@@ -381,8 +381,7 @@ layer_3/tile_data = PackedInt32Array()
 texture_filter = 1
 position = Vector2(336, 368)
 sprite_frames = SubResource("SpriteFrames_8hlrp")
-animation = &"up"
-frame_progress = 0.764947
+animation = &"left"
 script = ExtResource("2_fwo8u")
 speed = 7.0
 coins_sound = Array[AudioStream]([ExtResource("3_6qo0s"), ExtResource("5_clfhn")])
@@ -399,3 +398,5 @@ position = Vector2(336, 240)
 sprite_frames = SubResource("SpriteFrames_7vnpw")
 animation = &"right"
 script = ExtResource("6_vgbum")
+speed = 5.0
+rage_speed = 3.0
